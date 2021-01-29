@@ -1,0 +1,33 @@
+<div *ngIf="jugador != undefined">
+
+	<table>
+		<tr>
+			<th colspan="2" style="font-size:20px">{{jugador.nombre | uppercase}}</th>
+		</tr>
+		<tr>
+			<th style="text-align:right">Nombre:</th>
+			<td><input [(ngModel)]="jugador.nombre" placeholder="{{jugador.nombre}}" /></td>
+		</tr>
+		<tr>
+			<th style="text-align:right">Fecha de debut:</th>
+			<td><input #jugadorFechaDebut placeholder="(AAAA-MM-DD)"/></td>
+		</tr>
+		<tr>
+			<th style="text-align:right">Partidos:</th>
+			<td><input #jugadorPartidos placeholder="{{jugador.partidos}}"/></td>
+		</tr>
+		<tr>
+			<th style="text-align:right">Goles:</th>
+			<td><input #jugadorGoles placeholder="{{jugador.goles}}"/></td>
+		</tr>
+		<tr>
+			<th style="text-align:right">Activo:</th>
+			<td><input #jugadorActivo placeholder="(V o F)"/></td>
+		</tr>
+		<tr>
+			<th><button (click)="goBack()">Volver</button></th>
+			<td><button (click)="save(jugadorFechaDebut.value, jugadorPartidos.value, jugadorGoles.value, jugadorActivo.value)">Guardar</button>
+			</td>
+		</tr>
+	</table>
+</div>

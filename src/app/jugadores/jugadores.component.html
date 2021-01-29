@@ -1,0 +1,56 @@
+<p>Esta es la lista de todos los jugadores recogidos en nuestra base de datos</p>
+<br>
+
+<table>
+	<tr>
+		<td colspan="3"><b>¿Desea añadir un nuevo jugador?</b></td>
+	</tr>
+	<tr>
+		<th class="categoria">Nombre:</th>
+		<th><input #jugadorNombre /></th>
+	</tr>
+	<tr>
+		<th class="categoria">Fecha de debut:</th>
+		<th><input placeholder="(AAAA-MM-DD)" #jugadorFechaDebut /></th>
+	</tr>
+	<tr>
+		<th class="categoria">Partidos:</th>
+		<th><input  #jugadorPartidos /></th>
+	</tr>
+	<tr>
+		<th class="categoria">Goles:</th>
+		<th><input #jugadorGoles /></th>
+	</tr>
+	<tr>
+		<th class="categoria">Activo:</th>
+		<th><input placeholder="(V o F)" #jugadorActivo /></th>
+		<th><button
+    (click)="add(jugadorNombre.value, jugadorFechaDebut.value, jugadorPartidos.value, jugadorGoles.value, jugadorActivo.value); jugadorNombre.value=''; jugadorFechaDebut.value=''; jugadorPartidos.value=''; jugadorGoles.value=''; jugadorActivo.value=''"
+  >
+    Añadir
+  </button></th>
+	</tr>
+</table>
+<br>
+<br>
+
+<p>Selecciona un jugador de la lista si desea editarlo</p>
+<br>
+
+<table class="datos">
+	<tr>
+		<th class="cabeza">Nombre</th>
+		<th class="cabeza">Partidos</th>
+		<th class="cabeza">Goles</th>
+		<th class="cabeza">Goles por partido</th>
+		<th class="cabeza">Borrar</th>
+	</tr>
+	<tr *ngFor="let j of jugadores">
+		<th style="text-align:right" class="cabeza"><a routerLink="/detail/{{j.id}}" class="nombre">{{j.nombre}}</a>
+		</th>
+		<th class="valor">{{j.partidos}}</th>
+		<th class="valor">{{j.goles}}</th>
+		<th class="valor">{{j.gpp()}}</th>
+		<th class="valor"><button class="borrar" title="delete j" (click)="delete(j)">X</button></th>
+	</tr>
+</table>
